@@ -4,16 +4,13 @@ const Product = require('./product.model.js');
 //Create new Product
 exports.create = (req, res) => {
 
-    console.log("Entrée dans le product.create");
-    console.log("Body : " + JSON.stringify(req.body));
     // Request validation
     if(!req.body) {
         return res.status(400).send({
             message: "Product content can not be empty"
         });
     }
-    console.log("req.body.title : " + req.body.title);
-    console.log("req.body validated : let's create an object");
+    
     // Create a Product
     const product = new Product({
         title: req.body.title || "No product title",
@@ -22,7 +19,6 @@ exports.create = (req, res) => {
         company: req.body.company
     });
 
-    console.log("My product title : " + product.title + " and : " + product.description);
     // Save Product in the database
     product.save()
     .then(data => {

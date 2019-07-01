@@ -1,13 +1,9 @@
 // get dependencies
 const express = require('express');
-const bodyParser = require('body-parser');
-
 const app = express();
 
 // parse requests
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-//app.use(express.json());
+app.use(express.json());
 
 //Enable CORS for all HTTP methods
 app.use(function(req, res, next) {
